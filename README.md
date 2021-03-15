@@ -12,7 +12,7 @@
 
 1. Mengembalikan tipe data apapun
 2. Menggunakan tipe data apapun
-3. Short circuiting evaluation\*/
+3. Short circuiting evaluation
 
 contoh :
 
@@ -42,3 +42,13 @@ Sebagai pengingat berikut merupakan nilai `truthy` dan `falsy`
 - `0` - nol
 - `" "`, `' '`, ` ` - string kosong
 - `undefined`
+
+Berdasarkan nilai `truthy` dan `falsy` diatas mari kita buat contoh lagi
+
+```javascript
+console.log("" || "bambang"); // bambang
+console.log(true || 0); // bambang
+console.log(undefined || null || ""); // ''
+```
+
+> Ingat! Prinsipnya adalah javascript akan mencari `truthy` value sampai ketemu - kemudian ditampilkan dan selesei, jika tidak ditemukan maka apa yang paling terakhir akan ditampilkan walaupun semuanya `false`.
