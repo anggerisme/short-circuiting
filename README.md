@@ -1,4 +1,4 @@
-# short-circuiting
+# Short circuiting
 
 ## Operator Logika
 
