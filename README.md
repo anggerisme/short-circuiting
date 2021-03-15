@@ -56,6 +56,8 @@ console.log(undefined || null || "" || 0 || "Hello"); // 'Hello'
 
 ## Contoh kasus
 
+### Logika OR
+
 Kita akan mempelajari lebih jauh dari perilaku _short circuit_ ini pada kasus rumah makan kita. Pertama tama kita akan menggunakan _operator ternary_. Silahkan lihat source codenya disini untuk objek `rumahMakan`
 
 ```javascript
