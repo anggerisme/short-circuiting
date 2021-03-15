@@ -43,7 +43,9 @@ Sebagai pengingat berikut merupakan nilai `truthy` dan `falsy`
 - `" "`, `' '`, ` ` - string kosong
 - `undefined`
 
-Berdasarkan nilai `truthy` dan `falsy` diatas mari kita buat contoh lagi
+## Logika OR
+
+Berdasarkan nilai `truthy` dan `falsy` diatas mari kita buat contoh
 
 ```javascript
 console.log("" || "bambang"); // bambang
@@ -54,11 +56,9 @@ console.log(undefined || null || "" || 0 || "Hello"); // 'Hello'
 
 > Ingat! Prinsipnya adalah javascript akan mencari `truthy` value sampai ketemu - kemudian ditampilkan dan selesei, jika tidak ditemukan maka apa yang paling terakhir akan ditampilkan walaupun semuanya `false`.
 
-## Contoh kasus
-
-### Logika OR
-
 Kita akan mempelajari lebih jauh dari perilaku _short circuit_ ini pada kasus rumah makan kita. Pertama tama kita akan menggunakan _operator ternary_. Silahkan lihat source codenya disini untuk objek `rumahMakan`
+
+### Contoh kasus
 
 ```javascript
 const tanyaMenu = rumahMakan.bakmi ? rumahMakan.bakmi : "Menu tidak ada";
@@ -77,3 +77,50 @@ console.log(tanyaMenu2); // 'Menu tidak ada'
 > Dengan prinsip yang sama perilaku short ciruit akan mencari nilai kebenaran sampai ketemu. Jika tidak ketemu maka urutan nilai paling terakhir akan di tampilkan
 
 Dan tentu jika `rumahMakan.bakmi` bernilai benar (menunya ada) maka ia akan menjadi `truthy` kemudian akan ditampilkan
+
+Prinsip logika `OR`: Temukan nilai kebenaran dan segera tampilkan setelah ditemukan sekaligus hentikan proses. Jika tidak ada kebenaran maka tampilkan nilai `false` di urutan paling terakhir
+
+## Logika AND
+
+Perilaku _short circuit_ pada logika `AND` berkebalikan dengan apa yang kita tahu di logika `OR` yang mana _short circuit_ akan langsung mengembalikan nilai `false` jika nilai pertama yang ia temua bernilai `false`. Ingat bahwa cara kerja logika `AND` hanya akan bernilai **benar** jika semuanya **benar**, maka jika salah satunya saja sudah **salah** maka semuanya akan bernilai **salah**.
+
+```javascript
+console.log(0 && "bambang"); // 0
+```
+
+> Ingat! bahwa operator logika `AND` hanya akan mengembalikan value jika semmuanya bernilai `true`, sedangkan nilai `0` diatas merupakan `falsy` value. maka yang terjadi adalah javascript seketika menghentikan pembacaan kode walaupun nilai setelahnya bernilai `true`.
+
+```javascript
+console.log(10 && "bambang"); // bambang
+```
+
+> Pada kasus ini jika nilai pertama benar maka javascript akan melanjutkan ke nilai selanjutnya, jika nilai itu juga benar maka pembacaan kode akan terus berlanjut hingga menemukan kebenaran. Jika nilai terakhir bernilai benar, maka nilai terakhir itulah yang pada akhirnya akan ditampilkan
+
+Prinsip logika `AND`: Jika ditemukan salah satu saja kesalahan maka hentikan proses dan tampilkan kesalahan itu.
+
+```javascript
+console.log("Hello" && 10 && null && "bambang"); // null
+```
+
+> Sudah tahu ya alasanya kenapa yang ditampilkan adalah `null` :)
+
+### Contoh kasus
+
+Kita ingin menampilkan `function` yang ada di `rumahMakan` jika ternyata memang ada (`true`) maka tampilkan
+
+#### Menggunakan pengkondisian
+
+```javascript
+if (rumahMakan.mieRebus) {
+  rumahMakan.mieRebus("sawi", "daun bawang", "sledri", "kobis", "telur");
+}
+```
+
+#### Menggunakan Logika AND
+
+```javascript
+rumahMakan.mieRebus &&
+  rumahMakan.mieRebus("sawi", "daun bawang", "sledri", "kobis", "telur");
+```
+
+Kedua cara diatas menghasilkan nilai yang sama, tetapi contoh ini hanya menunjukkan cara kerja _short circuit_ pada kedua operator `AND` dan `OR`.
