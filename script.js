@@ -29,6 +29,6 @@
 1. Mengembalikan tipe data apapun 
 2. Menggunakan tipe data apapun
 3. Short circuiting evaluation*/
-console.log(3 || "bambang");
-console.log(3 && "bambang");
+console.log(undefined || null || ""); // bambang
+console.log("" || "bambang"); // bambang
 console.log(null || undefined);
