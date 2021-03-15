@@ -124,3 +124,47 @@ rumahMakan.mieRebus &&
 ```
 
 Kedua cara diatas menghasilkan nilai yang sama, tetapi contoh ini hanya menunjukkan cara kerja _short circuit_ pada kedua operator `AND` dan `OR`.
+
+## Nullish Coalescing Operator ??
+
+Ketika kita mendapatkan nilai dari sebuah ekspresi maka kalau bukan `null` dan `undefined` nilai itu berarti `defined`/terdefinisikan. Jadi dengan kata lain operator `??` mengembalikan nilai `nullish` value alih alih `falsy` value karena 2 nilai ini berbeda.
+
+```javascript
+console.log(0 ?? undefined);
+```
+
+> karena 0 termasuk ke dalam `defined` value maka `0` tentu akan ditampilkan meskipun ia termasuk ke `falsy` value
+
+Prinsip kerja operator `??` :
+
+```javascript
+console.log(a ?? b);
+```
+
+> Jika `a` bernilai `defined` maka tampilkan `a`
+> Jika `a` bernilai `undefined` maka tampilkan `b`
+
+contoh lain :
+
+```javascript
+let a = 11;
+let b = undefined;
+let c = 10;
+const result = a ?? b ?? c;
+console.log(result); // 11
+```
+
+> Jika sudah didapat nilai `defined` maka segera tampilkan dan hentikan proses
+
+### Kegunaan nullish operator
+
+Penggunaan umum operator `??` yakni untuk menyediakan nilai default untuk suatu variable yang berpotensi mengembalikan nilai `undefined` atau `null`
+
+```javascript
+let user;
+alert(user ?? "Anonim" ? `john` : "Williaw"); // John
+```
+
+> Jika tidak kita beri nilai diatas maka variable `user` akan bernilai `undefined` secara default. Dan untuk mengantisipasi hal itu kita definisikan dengan nilai yang kita sediakan di kondisi 1 pada operator ternary diatas.
+
+Kasus diatas jika user tidak memiliki nilai (`undefined`) maka nilai 'Anonim' lah yang akan ditampilkan.

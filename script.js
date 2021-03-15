@@ -1,4 +1,4 @@
-// ----- CONTOH KASUS -----
+// ----- SHORT CIRCUIT -----
 
 const rumahMakan = {
   nama: "Rumah makan berkah",
@@ -55,3 +55,16 @@ if (rumahMakan.mieRebus) {
 
 rumahMakan.mieRebus &&
   rumahMakan.mieRebus("sawi", "daun bawang", "sledri", "kobis", "telur");
+
+/* Nullish coalescing Operator ?? */
+console.log(0 ?? undefined); // 0 karena 0 termasuk ke dalam 'defined' value
+/* Ket : Karena nilai a sudah null dari awal maka seluruhnya salah, jugapun jika a = 10 dan b = undefined maka tetaplah salah, maka pilihan yang diambil adalah selalu kondisi 2  */
+let a = 11;
+let b = undefined;
+let c = 10;
+const result = a ?? b ?? c;
+console.log(result); // 11 -> Jika sudah didapat nilai `defined` maka segera tampilkan dan hentikan proses
+
+/* Memberikan nilai default untuk variable yang bernilai `undefined` */
+let user;
+alert(user ?? "Anonim" ? `john` : "Williaw"); // John
