@@ -1,8 +1,3 @@
-// ----- OVERVIEW -----
-console.log(undefined || null || ""); // ""
-console.log("" || "bambang"); // bambang
-console.log(null || undefined); // undefined
-
 // ----- CONTOH KASUS -----
 
 const rumahMakan = {
@@ -31,6 +26,14 @@ const rumahMakan = {
     console.log(...bumbuLain);
   },
 };
+
+// ----- LOGIKA OR -----
+
+console.log(undefined || null || ""); // "" --> false semua
+console.log("" || "bambang"); // bambang --> "" adalah falsy value
+console.log(null || undefined); // undefined --> keduanya false tapi tetap ditampilkan nilai yang terakhir
+console.log("Hello" || 10 || null || "bambang"); // null
+
 /* Mencari nilai kebenaran dengan operator ternary */
 const tanyaMenu = rumahMakan.bakmi ? rumahMakan.bakmi : "Menu tidak ada";
 console.log(tanyaMenu); // 'Menu tidak ada'
@@ -38,3 +41,17 @@ console.log(tanyaMenu); // 'Menu tidak ada'
 /* Dengan Operator Logika OR */
 const tanyaMenu2 = rumahMakan.bakmi || "Menu tidak ada";
 console.log(tanyaMenu2); // 'Menu tidak ada'
+
+// ----- LOGIKA AND -----
+console.log(0 && "bambang"); // 0
+console.log(10 && "bambang"); // bambang
+console.log("Hello" && 10 && null && "bambang"); // null
+
+/* Contoh Kasus */
+
+if (rumahMakan.mieRebus) {
+  rumahMakan.mieRebus("sawi", "daun bawang", "sledri", "kobis", "telur");
+}
+
+rumahMakan.mieRebus &&
+  rumahMakan.mieRebus("sawi", "daun bawang", "sledri", "kobis", "telur");
